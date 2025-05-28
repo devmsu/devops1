@@ -7,7 +7,7 @@ metadata:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: nginx-index
+  name: nginx-index1
   namespace: myapp1
 data:
   index.html: |
@@ -45,7 +45,7 @@ spec:
       volumes:
       - name: html-volume
         configMap:
-          name: nginx-index
+          name: nginx-index1
 
 ---
 apiVersion: v1
