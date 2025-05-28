@@ -10,4 +10,4 @@ data:
     g, devops-team-group, role:devops-team
     g, dev-team-group, role:dev-team
     g, qc-team-group, role:qc-team
-  policy.default: role:none
+  policy.default: role:readonly
