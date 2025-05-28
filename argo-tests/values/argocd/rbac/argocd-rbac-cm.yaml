@@ -1,0 +1,13 @@
+# rbac/argocd-rbac-cm.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+data:
+  policy.csv: |
+    g, platform-admins-group, role:admin
+    g, devops-team-group, role:devops-team
+    g, dev-team-group, role:dev-team
+    g, qc-team-group, role:qc-team
+  policy.default: role:readonly
