@@ -7,5 +7,5 @@ metadata:
 data:
   policy.csv: |
     g, dev-user, proj:workload-dev:dev-team
-    p, role:dev-team, exec, create, workload-dev/app1-yaml, allow
+    g, dev-user, proj:workload-dev:app1-exec-role
   policy.default: role:none
