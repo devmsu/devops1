@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: workload-dev
+  name: workload-qc
   namespace: argocd
 spec:
   destinations:
@@ -12,10 +12,7 @@ spec:
   roles:
   - name: devops-team
     policies:
-    - p, proj:workload-dev:devops-team, applications, *, workload-dev/*, allow
-  - name: dev-team
-    policies:
-    - p, proj:workload-dev:dev-team, applications, *, workload-dev/*, allow
+    - p, proj:workload-qc:devops-team, applications, *, workload-qc/*, allow
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
