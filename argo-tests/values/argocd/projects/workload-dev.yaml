@@ -18,7 +18,7 @@ spec:
     - p, proj:workload-dev:dev-team, applications, *, workload-dev/*, allow
   - name: app1-exec-role
     policies:
-    - p, proj:workload-dev:app1-exec-role, exec, *, workload-dev/app1, allow
+    - p, proj:workload-dev:app1-exec-role, exec, *, workload-dev/app1-yaml, allow
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
