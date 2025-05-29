@@ -6,5 +6,5 @@ metadata:
   namespace: argocd
 data:
   policy.csv: |
-    g, dev-user, proj:workload-dev:dev-team
+    g: dev-user, proj:workload-dev:dev-team
   policy.default: role:none
