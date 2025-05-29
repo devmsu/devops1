@@ -10,5 +10,5 @@ data:
     g, devops-team-group, role:devops-team
     g, dev-team-group, role:dev-team
     g, qc-team-group, role:qc-team
-    q: dev-user, role:dev-team
+    g: dev-user, role:dev-team
   policy.default: role:none
