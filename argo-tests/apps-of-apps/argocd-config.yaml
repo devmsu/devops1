@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: argocd-config
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      - configType: projects
+        path: argo-tests/values/argocd/projects
+      - configType: rbac
+        path: argo-tests/values/argocd/rbac
+  template:
+    metadata:
+      name: "argocd-{{ configType }}"
+      namespace: argocd
+      labels:
+        ArgoCD-configuration: ""
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/devmsu/devops1.git
+        targetRevision: main
+        path: "{{ path }}"
+        directory:
+          recurse: true
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: argocd
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
