@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: app-package1
+  namespace: argocd
+spec:
+  goTemplate: true
+  generators:
+  - list:
+      elements:
+      - app: app1
+        manifest: app1.yaml
+        deploymentType: yaml
+      - app: app2
+        manifest: app2.yaml
+        deploymentType: helm
+  template:
+    metadata:
+      name: "{{.app}}-{{.deploymentType}}"
+      labels:
+        environment: dev
+        package: app-package1
+    spec:
+      project: workload-dev
+      source:
+        repoURL: https://github.com/devmsu/devops1.git
+        targetRevision: main
+        path: argo-tests/apps/values/dev/app-package1
+        directory:
+          include: "{{.manifest}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: app-package1
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
+        - Validate=true
